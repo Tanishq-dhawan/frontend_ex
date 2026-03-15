@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
-import { SignIn, SignUp } from '@clerk/clerk-react';
+import { SignIn, SignUp } from "@clerk/react";
 
 export default function Auth() {
   const [role, setRole] = useState('traveler');

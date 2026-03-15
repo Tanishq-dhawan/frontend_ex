@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Menu, X } from 'lucide-react';
-import { SignedIn, SignedOut, UserButton, SignInButton, SignUpButton } from '@clerk/clerk-react';
+import { Show, UserButton, SignInButton, SignUpButton } from "@clerk/react";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,17 +19,17 @@ export default function Navbar() {
           <Link to="/#buddies" onClick={() => setIsMobileMenuOpen(false)}>MEET OUR BUDDIES</Link>
           <Link to="/pricing" onClick={() => setIsMobileMenuOpen(false)}>PRICING</Link>
           
-          <SignedOut>
+          <Show when="signed-out">
             <SignInButton mode="modal">
               <button className="text-white hover:text-yellow-400 font-bold text-sm uppercase mr-4" onClick={() => setIsMobileMenuOpen(false)}>LOG IN</button>
             </SignInButton>
             <SignUpButton mode="modal">
               <button className="btn btn-primary btn-signup" onClick={() => setIsMobileMenuOpen(false)}>SIGN UP</button>
             </SignUpButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton afterSignOutUrl="/" />
-          </SignedIn>
+          </Show>
+          <Show when="signed-in">
+            <UserButton />
+          </Show>
         </nav>
 
         <button 
